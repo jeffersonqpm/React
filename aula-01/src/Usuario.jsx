@@ -3,7 +3,7 @@ function Usuario() {
         <div>
 
             <div>
-                <h1>Cadastro de Usuarios</h1>
+                <h1>Cadastro de Usuarios - SGP</h1>
 
                 <label htmlFor="nome">Nome:  <span className="obrigatorio ">* </span></label>
                 <input type="text" placeholder="Nome do usuário" /><br /><br />
