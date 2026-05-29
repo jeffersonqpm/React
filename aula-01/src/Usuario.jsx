@@ -30,7 +30,7 @@ function Usuario() {
                 <input type="button" value="Salvar" />
                 <br /><br /><br />
 
-                <input type="reset" value="Cancelar" />
+                <input type="reset" value="Cancelarr" />
             </div>
 
             
