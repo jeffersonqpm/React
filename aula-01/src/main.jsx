@@ -1,20 +1,51 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-// import './index.css'
-import './Jeff.css'
-import App from './App.jsx'
-import Teste from './Teste.jsx'
-// import Jeff from './Jeff.jsx'
+import "bootstrap/dist/css/bootstrap.min.css";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './Jeff.css';
+import Teste from './Teste.jsx';
 
+// import 'bootstrap-icons/font/bootstrap-icons.css';
 
 createRoot(document.getElementById('root')).render(
-  // <StrictMode>
-    // <App />
-    // </StrictMode>,
-    
+  <StrictMode>
     <Teste />
+  </StrictMode>
+);
 
-  )
+
+
+
+
+
+
+
+
+
+
+
+
+// import "bootstrap/dist/css/bootstrap.min.css"; // Corrigido aqui!
+// // import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+
+// import { StrictMode } from "react";
+// import { StrictMode } from 'react'
+// import { createRoot } from 'react-dom/client'
+// // import './index.css'
+// import './Jeff.css'
+// import App from './App.jsx'
+// import Teste from './Teste.jsx'
+// // import Jeff from './Jeff.jsx'
+
+
+// createRoot(document.getElementById('root')).render(
+//   // <StrictMode>
+//     // <App />
+//     // </StrictMode>,
+    
+//     <Teste />
+
+//   )
 
 
 
