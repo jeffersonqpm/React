@@ -5,10 +5,13 @@ function ItemList({ itens }) {
 
     return (
 
-        <div>
+        // primeiro exemplo
+        // <div>
 
-            {itens.map((e) => <Itemcard item={e}/>)}
-        </div>
+        //     {itens.map((e) => <Itemcard item={e}/>)}
+        // </div>
+        // **************************
+        
 
 
 
