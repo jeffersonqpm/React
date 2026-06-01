@@ -6,8 +6,8 @@ import Projeto from './Projeto';   // Importando o arquivo correto que criamos a
 function Teste() {
     return (
         <div>
+            <h1>Testando o app</h1>
             <Menu />
-            <Usuarios />
             <Projeto />
         </div>
     );
