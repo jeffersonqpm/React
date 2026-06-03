@@ -1,0 +1,11 @@
+comandos para criar um novo projeto no React + Vite
+
+npm create vite@latest Aula_02
+
+npm install
+
+npm run dev
+
+instalando: npm install react-router-dom
+
+importando o hook: 
