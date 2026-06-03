@@ -20,6 +20,7 @@ function App() {
   }
   
   salvar9(tarefas);
+
   // ===== exemplo 03=====================
 
 
