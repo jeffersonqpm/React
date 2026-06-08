@@ -1,5 +1,6 @@
 // import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function Usuarios() {
 
@@ -32,7 +33,8 @@ function Usuarios() {
                 <Form.Label htmlFor='email'>E-mail</Form.Label>
                 <Form.Control size="sm" type="email" placeholder="Digite o e-mail" />
 
-            </div>
+            </div><br />
+               <Button variant="success">Salvar</Button>
         </>
     </div >
 
