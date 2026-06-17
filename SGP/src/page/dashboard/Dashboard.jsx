@@ -1,6 +1,6 @@
 function DashBoard(){
 return <div>
-    asfadgsdg
+    Dashboard
 </div>
 
 

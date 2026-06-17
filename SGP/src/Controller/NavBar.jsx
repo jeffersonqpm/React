@@ -25,7 +25,7 @@ function NavBar() {
                         <Nav.Link as={Link} to="/usuarios">Usuários</Nav.Link>
                     </Nav>
 
-                 
+
                 </Container>
             </Navbar>
 

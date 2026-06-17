@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 import NavBar from "./Controller/NavBar"
 import Container from 'react-bootstrap/esm/Container';
 
-import Usuarios from './page/Usuarios';
-import Dashboard from './page/Dashboard';
-import Tarefas from './page/Tarefas';
-import Projetos from './page/Projetos';
+import Usuarios from './page/usuarios/Usuarios';
+import Dashboard from './page/dashboard/Dashboard';
+import Tarefas from './page/tarefas/Tarefas';
+import Projetos from './page/projetos/Projetos';
 
 
 
