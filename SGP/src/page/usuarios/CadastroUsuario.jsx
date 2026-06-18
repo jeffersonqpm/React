@@ -10,7 +10,15 @@ function CadastroUsuario({ show, ocultar }) {
     const [senha, setSenha] = useState('');
     const [status, setStatus] = useState('');
 
+    const limparFomulario = () =>{
 
+        setNome('');
+        setCpf('');
+        setEmail('');
+        setData('');
+        setSenha('');
+        setStatus('');
+    };
 
     const salvar = async () => {
 
@@ -53,6 +61,8 @@ function CadastroUsuario({ show, ocultar }) {
             const dados = await response.json();
             console.log(dados);
             alert("Usuário cadastrado com sucesso!")
+            limparFomulario();
+            ocultar();
 
 
             
