@@ -54,6 +54,7 @@ function CadastroUsuario({ show, ocultar }) {
             console.log(dados);
             alert("Usuário cadastrado com sucesso!")
 
+
             
         } catch (error) {
             console.log(error)
