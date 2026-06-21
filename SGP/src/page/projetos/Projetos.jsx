@@ -1,7 +1,7 @@
 function Projetos(){
 
     return   <div>
-        Projetos
+        Tela de Projetos
     </div>
 }
 

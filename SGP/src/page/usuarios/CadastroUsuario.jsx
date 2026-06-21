@@ -72,7 +72,7 @@ function CadastroUsuario({ show, ocultar }) {
         }
 
 
-    }
+    };
 
     return <Modal show={show} onHide={ocultar}>
         <Modal.Header closeButton>

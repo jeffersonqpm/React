@@ -5,7 +5,7 @@ import CadastroUsuario from "./CadastroUsuario";
 function Usuarios() {
     const [show, setShow] = useState(false);
     // Alterado o nome para 'usuarios' para fazer mais sentido
-    const [usuarios, setUsuarios] = useState([]); 
+    const [usuarios, setUsuarios] = useState([]);
 
     const exibir = () => setShow(true);
     const ocultar = () => setShow(false);
@@ -32,7 +32,7 @@ function Usuarios() {
                     <h2>Painel de Usuários</h2>
                     <Button variant="dark" onClick={exibir}>Cadastrar Usuário</Button>
                 </Card.Header>
-                
+
                 <Card.Body>
                     <h2>Lista de Usuário</h2>
 
@@ -43,7 +43,7 @@ function Usuarios() {
                         <ul>
                             {usuarios.map((usuario) => (
                                 <li key={usuario.id}>
-                                    <strong>{usuario.nome}</strong> - {usuario.email} ({usuario.status})
+                                    {usuario.id}- <strong>{usuario.nome}</strong> - {usuario.email} ({usuario.status})
                                 </li>
                             ))}
                         </ul>
