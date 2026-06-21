@@ -10,7 +10,7 @@ function CadastroUsuario({ show, ocultar }) {
     const [senha, setSenha] = useState('');
     const [status, setStatus] = useState('');
 
-    const limparFomulario = () =>{
+    const limparFomulario = () => {
 
         setNome('');
         setCpf('');
@@ -65,10 +65,10 @@ function CadastroUsuario({ show, ocultar }) {
             ocultar();
 
 
-            
+
         } catch (error) {
             console.log(error)
-            alert("Erro ao caadstrar o Usuário")
+            alert("Erro ao cadastrar o Usuário")
         }
 
 

@@ -39,7 +39,7 @@ function Tarefas() {
 
     return (
 
-
+   
         <Container className="mt-4">
             <Card>
                 <Card.Header className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
@@ -59,8 +59,7 @@ function Tarefas() {
                         <ul>
                             {tarefas.map((tarefa) => (
                                 <li key={tarefa.id}>
-                                    <strong>{tarefa.titulo}</strong> - {tarefa.descricao} - {tarefa.dataCriacao}  | {tarefa.dataConclusao}
-                                - ({tarefa.prioridade})
+                                    <strong>{tarefa.status}</strong> - {tarefa.titulo} ({tarefa.descricao})
                                 </li>
                             ))}
                         </ul>

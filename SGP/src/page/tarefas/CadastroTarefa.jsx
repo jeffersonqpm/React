@@ -1,40 +1,77 @@
 import { useState } from "react"
-import { Modal } from "react-bootstrap"
+import { Col, Modal } from "react-bootstrap"
 import { Button } from "react-bootstrap"
 import { Form, Row } from "react-bootstrap"
 // import Tarefas from "./Tarefas"
+import './tarefaStaly.css';
 
 
 function CadastroTarefa({ show, ocultar }) {
 
     const [titulo, setTitulo] = useState('');
     const [descricao, setDescricao] = useState('');
+    const [dataCriacao, setDataCriacao] = useState('');
+    const [dataConclusao, setDataConclusao] = useState('');
     const [prioridade, setPrioridade] = useState('');
     const [status, setStatus] = useState('');
-    const [data, setData] = useState('');
+    const [usuarioId, setUsuarioId] = useState('');
+    const [projetoId, setProjetoId] = useState('');
 
-    const tarefa = {
+    const limparFomulario = () => {
 
-        titulo: titulo,
-        descricao: descricao,
-        prioridade: prioridade,
-        status: status,
-        data: data,
-        projetoId: 0,
-        responsavelId: 0
+        setTitulo('');
+        setDescricao('');
+        setDataCriacao('');
+        setDataConclusao('');
+        setPrioridade('');
+        setStatus('');
+        setUsuarioId('');
+        setProjetoId('');
     }
 
-    const salvar = () => {
+    const salvar = async () => {
+
+        const tarefa = {
+
+            titulo: titulo,
+            descricao: descricao,
+            dataCriacao: dataCriacao,
+            dataConclusao: dataConclusao,
+            prioridade: prioridade,
+            status: status,
+            usuarioId: usuarioId,
+            projetoId: projetoId,
+
+        }
+
+
+        try {
+
+            const response = await fetch("http://localhost:8080/api/tarefas", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(tarefa)
+            }
+            );
+
+            // if (!response.ok) {
+            //     throw new Error("Erro na resposta do servidor");
+            // }
+
+            const dados = await response.json();
+            console.log(dados);
+            alert("Tarefa cadastrada com sucesso!")
+            limparFomulario();
+            ocultar();
 
 
 
-        fetch("http://localhost:8080/api/tarefas", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/jason'
-            },
-            body: JASON.stringify(tarefa)
-        })
+        } catch (error) {
+            console.log(error)
+            alert("Erro ao cadastrar o Projeto")
+        }
 
     }
 
@@ -46,28 +83,76 @@ function CadastroTarefa({ show, ocultar }) {
         <Modal.Body>
             <Form>
                 <Row>
-                    <Form.Label>Título</Form.Label>
+                    <Form.Label>Título <span className="mandatory">*</span> </Form.Label>
                     <Form.Control value={titulo} onChange={(c) => setTitulo(c.target.value)}></Form.Control>
                 </Row>
 
                 <Row>
-                    <Form.Label>Descrição</Form.Label>
+                    <Form.Label>Descrição<span className="mandatory">*</span></Form.Label>
                     <Form.Control value={descricao} onChange={(c) => setDescricao(c.target.value)}></Form.Control>
                 </Row>
+                <Row className="mb-3 gx-5">
 
+                    <Col md={5}>
+                        <Row>
+                            <Form.Label>Data de Criação <span className="mandatory">*</span></Form.Label>
+                            <Form.Control type="date" value={dataCriacao} onChange={(c) => setDataCriacao(c.target.value)}></Form.Control>
+                        </Row>
+                    </Col>
+
+                    <Col md={5}>
+                        <Row>
+                            <Form.Label>Data de conslusão <span className="mandatory">*</span></Form.Label>
+                            <Form.Control type="date" value={dataConclusao} onChange={(c) => setDataConclusao(c.target.value)}></Form.Control>
+                        </Row>
+
+
+                    </Col>
+
+
+                </Row>
                 <Row>
-                    <Form.Label>Prioridade</Form.Label>
-                    <Form.Control value={prioridade} onChange={(c) => setPrioridade(c.target.value)}></Form.Control>
+
+
+                    <Form.Label>Prioridade <span className="mandatory">*</span></Form.Label>
+                    <Form.Control
+                        id="prioridade"
+                        as="select"
+                        value={prioridade}
+                        onChange={(c) => setPrioridade(c.target.value)}>
+
+                        <option value="#">Selecione</option>
+                        <option value="BAIXA">Baixa</option>
+                        <option value="MEDIA">Média</option>
+                        <option value="ALTA">Alta</option>
+
+
+
+                    </Form.Control>
+
+                </Row>
+                <Row>
+                    <Form.Label htmlFor="status">Status <span className="mandatory">*</span></Form.Label>
+                    <Form.Control
+                        id="status"
+                        as="select" // <-- Isso transforma o input de texto em um select
+                        value={status}
+                        onChange={(c) => setStatus(c.target.value)}
+                    >
+                        <option value="#">Selecione</option>
+                        <option value="PENDENTE">Pendente</option>
+                        <option value="FAZENDO">Fazendo</option>
+                        <option value="CONCLUIDA">Concluída</option>
+                    </Form.Control>
                 </Row>
 
                 <Row>
-                    <Form.Label>Status</Form.Label>
-                    <Form.Control value={status} onChange={(c) => setStatus(c.target.value)}></Form.Control>
+                    <Form.Label>Usuário <span className="mandatory">*</span></Form.Label>
+                    <Form.Control value={usuarioId} onChange={(c) => setUsuarioId(c.target.value)}></Form.Control>
                 </Row>
-
                 <Row>
-                    <Form.Label>Data</Form.Label>
-                    <Form.Control value={data} type="date" onChange={(c) => setData(c.target.value)}></Form.Control>
+                    <Form.Label>Projeto <span className="mandatory">*</span> </Form.Label>
+                    <Form.Control value={projetoId} onChange={(c) => setProjetoId(c.target.value)}></Form.Control>
                 </Row>
 
             </Form>
@@ -84,7 +169,7 @@ function CadastroTarefa({ show, ocultar }) {
         </Modal.Footer>
     </Modal>
 
-    
+
 
 }
 

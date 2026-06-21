@@ -34,6 +34,8 @@ function Usuarios() {
                 </Card.Header>
                 
                 <Card.Body>
+                    <h2>Lista de Usuário</h2>
+
                     {/* CORREÇÃO 2: Percorrendo a lista de usuários corretamente */}
                     {usuarios.length === 0 ? (
                         <p>Nenhum usuário encontrado.</p>
