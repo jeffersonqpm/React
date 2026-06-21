@@ -4,7 +4,6 @@ import CadastroUsuario from "./CadastroUsuario";
 
 function Usuarios() {
     const [show, setShow] = useState(false);
-    // Alterado o nome para 'usuarios' para fazer mais sentido
     const [usuarios, setUsuarios] = useState([]);
 
     const exibir = () => setShow(true);

@@ -27,7 +27,7 @@ function CadastroTarefa({ show, ocultar }) {
         setStatus('');
         setUsuarioId('');
         setProjetoId('');
-    }
+    };
 
     const salvar = async () => {
 
@@ -44,6 +44,22 @@ function CadastroTarefa({ show, ocultar }) {
 
         }
 
+        // const [listaUsuarios, setListaUsuarios] = useState([]);
+        // const [listaProjetos, setListaProjetos] = useState([]);
+
+        // useEffect(() => {
+        //     if (show) {
+        //         // Busca usuários
+        //         fetch("http://localhost:8080/api/usuarios")
+        //             .then(res => res.json())
+        //             .then(dados => setListaUsuarios(dados));
+
+        //         // Busca projetos
+        //         fetch("http://localhost:8080/api/projetos")
+        //             .then(res => res.json())
+        //             .then(dados => setListaProjetos(dados));
+        //     }
+        // }, [show]);
 
         try {
 
@@ -56,9 +72,9 @@ function CadastroTarefa({ show, ocultar }) {
             }
             );
 
-            // if (!response.ok) {
-            //     throw new Error("Erro na resposta do servidor");
-            // }
+            if (!response.ok) {
+                throw new Error("Erro na resposta do servidor");
+            }
 
             const dados = await response.json();
             console.log(dados);
@@ -75,9 +91,9 @@ function CadastroTarefa({ show, ocultar }) {
 
     }
 
-    return <Modal show={show} onHide={ocultar}>
+    return <Modal show={show} onHide={ocultar} size="lg">
         <Modal.Header closeButton>
-            <Modal.Title>Cadastrar Nova Tarefa</Modal.Title>
+            <Modal.Title>Cadastrar nova Tarefa</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -90,7 +106,7 @@ function CadastroTarefa({ show, ocultar }) {
                 <Row>
                     <Form.Label>Descrição<span className="mandatory">*</span></Form.Label>
                     <Form.Control value={descricao} onChange={(c) => setDescricao(c.target.value)}></Form.Control>
-                </Row>
+                </Row> <br />
                 <Row className="mb-3 gx-5">
 
                     <Col md={5}>
@@ -111,40 +127,40 @@ function CadastroTarefa({ show, ocultar }) {
 
 
                 </Row>
-                <Row>
 
+                <Row className="mb-3 gx-4">
 
-                    <Form.Label>Prioridade <span className="mandatory">*</span></Form.Label>
-                    <Form.Control
-                        id="prioridade"
-                        as="select"
-                        value={prioridade}
-                        onChange={(c) => setPrioridade(c.target.value)}>
+                    <Row>
+                        <Form.Label>Prioridade <span className="mandatory">*</span></Form.Label>
+                        <Form.Control
+                            id="prioridade"
+                            as="select"
+                            value={prioridade}
+                            onChange={(c) => setPrioridade(c.target.value)}>
 
-                        <option value="#">Selecione</option>
-                        <option value="BAIXA">Baixa</option>
-                        <option value="MEDIA">Média</option>
-                        <option value="ALTA">Alta</option>
+                            <option value="#">Selecione</option>
+                            <option value="BAIXA">Baixa</option>
+                            <option value="MEDIA">Média</option>
+                            <option value="ALTA">Alta</option>
+                        </Form.Control>
+                    </Row>
 
-
-
-                    </Form.Control>
-
+                    <Row>
+                        <Form.Label htmlFor="status">Status <span className="mandatory">*</span></Form.Label>
+                        <Form.Control
+                            id="status"
+                            as="select" // <-- Isso transforma o input de texto em um select
+                            value={status}
+                            onChange={(c) => setStatus(c.target.value)}
+                        >
+                            <option value="#">Selecione</option>
+                            <option value="PENDENTE">Pendente</option>
+                            <option value="FAZENDO">Fazendo</option>
+                            <option value="CONCLUIDA">Concluída</option>
+                        </Form.Control>
+                    </Row>
                 </Row>
-                <Row>
-                    <Form.Label htmlFor="status">Status <span className="mandatory">*</span></Form.Label>
-                    <Form.Control
-                        id="status"
-                        as="select" // <-- Isso transforma o input de texto em um select
-                        value={status}
-                        onChange={(c) => setStatus(c.target.value)}
-                    >
-                        <option value="#">Selecione</option>
-                        <option value="PENDENTE">Pendente</option>
-                        <option value="FAZENDO">Fazendo</option>
-                        <option value="CONCLUIDA">Concluída</option>
-                    </Form.Control>
-                </Row>
+
 
                 <Row>
                     <Form.Label>Usuário <span className="mandatory">*</span></Form.Label>

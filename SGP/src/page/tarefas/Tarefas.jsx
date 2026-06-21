@@ -60,7 +60,7 @@ function Tarefas() {
                             {tarefas.map((tarefa) => (
                                 <li key={tarefa.id}>
                                     <strong>{tarefa.titulo}</strong> - {tarefa.descricao} - {tarefa.dataCriacao}  | {tarefa.dataConclusao}
-                                - ({tarefa.prioridade})
+                                    - ({tarefa.prioridade})
                                 </li>
                             ))}
                         </ul>
@@ -68,6 +68,11 @@ function Tarefas() {
 
 
                 </Card.Body>
+
+                <Card.Footer>
+                    {/* Espaço para paginação ou contagem se desejar */}
+                    <small className="text-muted">Total de tarefas: {tarefas.length}</small>
+                </Card.Footer>
 
             </Card>
 

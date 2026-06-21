@@ -70,8 +70,6 @@ function CadastroUsuario({ show, ocultar }) {
             console.log(error)
             alert("Erro ao cadastrar o Usuário")
         }
-
-
     };
 
     return <Modal show={show} onHide={ocultar}>
@@ -115,9 +113,6 @@ function CadastroUsuario({ show, ocultar }) {
                     <Form.Control type="password" value={senha} onChange={(c) => setSenha(c.target.value)}></Form.Control>
 
                 </Row>
-
-
-
 
             </Form>
 
