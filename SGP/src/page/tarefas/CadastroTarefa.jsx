@@ -3,7 +3,8 @@ import { Col, Modal } from "react-bootstrap"
 import { Button } from "react-bootstrap"
 import { Form, Row } from "react-bootstrap"
 // import Tarefas from "./Tarefas"
-import './tarefaStaly.css';
+// import './tarefaStaly.css';
+
 
 
 function CadastroTarefa({ show, ocultar }) {

@@ -64,29 +64,29 @@ function CadastroProjeto({ show, ocultar }) {
             <Form>
 
                 <Row>
-                    <Form.Label>Nome</Form.Label>
+                    <Form.Label>Nome<span className="mandatory">*</span></Form.Label>
                     <Form.Control value={nome} onChange={(c) => setNome(c.target.value)}></Form.Control>
 
                 </Row><br />
                 <Row>
 
-                    <Form.Label>Descrição</Form.Label>
+                    <Form.Label>Descrição<span className="mandatory">*</span></Form.Label>
                     <Form.Control value={descricao} onChange={(c) => setDescricao(c.target.value)}></Form.Control>
 
                 </Row><br />
 
                 <Row>
-                    <Form.Label>Data de início</Form.Label>
+                    <Form.Label>Data de início<span className="mandatory">*</span></Form.Label>
                     <Form.Control type="date" value={dataInicio} onChange={(c) => setDataInicio(c.target.value)}></Form.Control>
 
                 </Row><br />
                 <Row>
-                    <Form.Label>Data de final</Form.Label>
+                    <Form.Label>Data de final<span className="mandatory">*</span></Form.Label>
                     <Form.Control type="date" value={dataFinal} onChange={(c) => setDataFinal(c.target.value)}></Form.Control>
 
                 </Row><br />
                 <Row>
-                    <Form.Label>Status <span>*</span> </Form.Label>
+                    <Form.Label>Status<span className="mandatory">*</span></Form.Label>
                     <Form.Control
                         id="status"
                         as="select"
@@ -101,7 +101,7 @@ function CadastroProjeto({ show, ocultar }) {
                 </Row><br />
                 <Row>
 
-                    <Form.Label>Responsável</Form.Label>
+                    <Form.Label>Responsável<span className="mandatory">*</span></Form.Label>
                     <Form.Control value={responsavelId} onChange={(c) => setResposavelId(c.target.value)}></Form.Control>
 
                 </Row><br />

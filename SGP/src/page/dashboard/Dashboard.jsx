@@ -1,3 +1,4 @@
+// npm install recharts
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, ProgressBar } from "react-bootstrap";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
