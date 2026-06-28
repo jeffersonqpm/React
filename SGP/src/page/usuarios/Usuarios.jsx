@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
-import { Container, Card, Button, Table, Badge } from "react-bootstrap"; 
+import { Container, Card, Button, Table, Badge } from "react-bootstrap";
 import CadastroUsuario from "./CadastroUsuario";
 
 function Usuarios() {
     const [show, setShow] = useState(false);
     const [usuarios, setUsuarios] = useState([]);
 
+    // ESTADO PARA EDIÇÃO: Guarda o objeto do usuário selecionado
+    const [usuarioParaEditar, setUsuarioParaEditar] = useState(null);
+
     const exibir = () => setShow(true);
-    const ocultar = () => setShow(false);
+
+    // Limpa o estado de edição ao fechar para não afetar o próximo cadastro
+    const ocultar = () => {
+        setShow(false);
+        setUsuarioParaEditar(null);
+    };
 
     useEffect(() => {
         mostrarUsuarios();
@@ -23,10 +31,10 @@ function Usuarios() {
         }
     };
 
-    // Funções para os botões de Ação
-    const lidarComEditar = (id) => {
-        console.log("Editar usuário com ID:", id);
-        // Aqui no futuro você pode abrir o modal de edição
+    // Agora recebe o objeto completo do usuário da linha clicada
+    const lidarComEditar = (usuario) => {
+        setUsuarioParaEditar(usuario);
+        exibir();
     };
 
     const excluir = async (id) => {
@@ -35,7 +43,7 @@ function Usuarios() {
                 const response = await fetch(`http://localhost:8080/api/usuarios/${id}`, {
                     method: 'DELETE'
                 });
-                
+
                 if (response.ok) {
                     setUsuarios(usuarios.filter(usuario => usuario.id !== id));
                     alert("Usuário excluído com sucesso!");
@@ -48,13 +56,14 @@ function Usuarios() {
         }
     };
 
-    // Estiliza o Status do Usuário com cores adequadas
     const renderStatusBadge = (status) => {
         switch (status) {
             case 'ATIVO':
                 return <Badge bg="success">Ativo</Badge>;
             case 'INATIVO':
                 return <Badge bg="danger">Inativo</Badge>;
+            case 'BLOQUEADO':
+                return <Badge bg="dark">Bloqueado</Badge>;
             default:
                 return <Badge bg="secondary">{status || "—"}</Badge>;
         }
@@ -82,6 +91,8 @@ function Usuarios() {
                                     <th className="ps-4">ID</th>
                                     <th>Nome</th>
                                     <th>E-mail</th>
+                                    <th>Dt.Nascimento</th>
+                                    <th className="text-center">CPF</th>
                                     <th className="text-center">Status</th>
                                     <th className="pe-4 text-center">Ações</th>
                                 </tr>
@@ -92,25 +103,26 @@ function Usuarios() {
                                         <td className="ps-4 fw-bold text-secondary">{usuario.id}</td>
                                         <td className="fw-bold text-secondary">{usuario.nome}</td>
                                         <td className="text-muted">{usuario.email}</td>
-                                        
-                                        {/* Status formatado com Badge */}
+                                        <td className="text-muted">{usuario.dataNascimento}</td>
+                                        <td className="text-muted">{usuario.cpf}</td>
+
                                         <td className="text-center">
                                             {renderStatusBadge(usuario.status)}
                                         </td>
-                                        
-                                        {/* Botões de Ação Sólidos */}
+
                                         <td className="pe-4 text-center">
                                             <div className="d-flex justify-content-center gap-2">
-                                                <Button 
-                                                    variant="warning" 
+                                                {/* Passa o objeto usuario completo para a edição */}
+                                                <Button
+                                                    variant="warning"
                                                     size="sm"
                                                     className="fw-bold text-dark"
-                                                    onClick={() => lidarComEditar(usuario.id)}
+                                                    onClick={() => lidarComEditar(usuario)}
                                                 >
                                                     ✏️ Editar
                                                 </Button>
-                                                <Button 
-                                                    variant="danger" 
+                                                <Button
+                                                    variant="danger"
                                                     size="sm"
                                                     className="fw-bold text-white"
                                                     onClick={() => excluir(usuario.id)}
@@ -133,7 +145,13 @@ function Usuarios() {
                 </Card.Footer>
             </Card>
 
-            <CadastroUsuario show={show} ocultar={ocultar} />
+            {/* Repassa as propriedades de controle e recarregamento para o Modal */}
+            <CadastroUsuario
+                show={show}
+                ocultar={ocultar}
+                usuarioParaEditar={usuarioParaEditar}
+                atualizarLista={mostrarUsuarios}
+            />
         </Container>
     );
 }
