@@ -1,16 +1,109 @@
 // npm install recharts
+// https://react-chartjs-2.js.org/
+
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, BarElement, LinearScale, PointElement, LineElement } from "chart.js";
+// import { Doughnut } from "react-chartjs-2";
+import { Bar, Pie, Line } from 'react-chartjs-2'; //barra
+
+ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, BarElement, LinearScale, PointElement, LineElement);
 
 
 function DashBoard() {
-    // Estados para guardar os totais (futuramente vindos das suas APIs)
 
+// GRÁFICO DE LINHA 
     return (
 
-        <div>
-            dashboard
+        <div style={{ width: "600px", height: "300px", margin: "0 auto" }}><Line data={{
+
+            labels: ["Brasil", "Paraguai", "Marrocos", "França"],
+            datasets: [{
+            label: "Chance de ser campeão",
+            data: [11, 3, 5, 5],
+            backgroundColor:[
+                "#0000CD",
+                "#0000CD",
+                "#0000CD",
+                "#0000CD",       
+
+            ]
+        },
+        {
+            label: "Chance de ser eliminado",
+            data: [3, 8, 7, 10],
+            backgroundColor:[
+                "#f70000",
+                "#f70000",
+                "#f70000",
+                "#f70000",
+
+            ]
+        },
+
+
+        ]
+    }} />
         </div>
-        
+
     );
+    // PIZZA=====================================
+
+
+
+    //  return (
+
+    //     <div style={{ width: "300px", height: "300px", margin: "0 auto" }}><Pie data={{
+
+    //         labels: ["Brasil", "Paraguai", "Marrocos", "França"],
+    //         datasets: [{
+    //             label: "Chance de ser campeão",
+    //             data: [9, 3, 5, 5],
+    //             backgroundColor: [
+    //                 "#0000CD",
+    //                 "#4bcd00",
+    //                 "#cd0000",
+    //                 "#00cd9d",
+
+    //             ]
+    //         }
+
+
+    //         ]
+    //     }} />
+    //     </div>
+
+    // );
+
+    // return (<Bar data={{
+
+    //     labels: ["Brasil", "Paraguai", "Marrocos", "França"],
+    //     datasets: [{
+    //         label: "Chance de ser campeão",
+    //         data: [9, 3, 5, 5],
+    //         backgroundColor:[
+    //             "#0000CD",
+    //             "#0000CD",
+    //             "#0000CD",
+    //             "#0000CD",       
+
+    //         ]
+    //     },
+    //     {
+    //         label: "Chance de ser eliminado",
+    //         data: [3, 8, 7, 10],
+    //         backgroundColor:[
+    //             "#f70000",
+    //             "#f70000",
+    //             "#f70000",
+    //             "#f70000",
+
+    //         ]
+    //     },
+
+
+    //     ]
+    // }} />
+
+    // );
 }
 
 export default DashBoard;
@@ -161,3 +254,5 @@ export default DashBoard;
 // }
 
 // export default DashBoard;
+
+
